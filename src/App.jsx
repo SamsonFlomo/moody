@@ -87,7 +87,7 @@ function App() {
       selected: "",
     },
   ]);
-  
+
 
 
   const [filterBtns, setFilterBtns] = useState(
@@ -180,6 +180,7 @@ function App() {
   const handleFilterBtnClick = (e, setFilterBtns) => {
     filterPosts(e.target.id, setFilterBtns, setPosts);
   };
+
 
   // RENDER
 
