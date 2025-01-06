@@ -25,7 +25,7 @@
 
 body {
     width: 100vw;
-    min-height: 100%;
+    min-height: 100vh;
     background-color: var(--secondary-light-color);
     margin: 0;
     padding: 0;
