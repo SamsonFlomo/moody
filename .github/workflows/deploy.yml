@@ -1,0 +1,12 @@
+export default defineConfig(({ mode }) => {
+  const config = {
+    plugins: [react()],
+    base: '',
+  };
+
+  if (mode === 'development' || mode === 'github') {
+    config.base = '/air-bnb-experience/';
+  }
+
+  return config;
+});

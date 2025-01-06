@@ -1,0 +1,155 @@
+import { useState } from "react";
+import UpdateProfileModal from "./UpdateProfileModal";
+import CreatePost from "./CreatePost";
+
+function LoggedInView({
+  user,
+  onSignOut,
+  updatedUser,
+  handleUpdateProfile,
+  handleUpdateProfileChange,
+  handleAddPost,
+  handleDeletePost,
+  handleUpdatePost,
+  handleUpdatePostChange,
+  handleNewPostChange,
+  handleMoodClick,
+  posts,
+  newPost,
+  mood,
+  displayFormatedDate,
+}) {
+  const [showModal, setShowModal] = useState(false);
+  const [editingPost, setEditingPost] = useState({ id: "", body: "" });
+
+  const toggleModal = () => setShowModal(!showModal);
+
+
+  const moodElments = mood.map((mood) => (
+    <button
+      key={mood.id}
+      id={mood.id}
+      className={`mood-emoji-btn ${mood.selected}`}
+      onClick={handleMoodClick}
+    >
+      <img src={mood.imgUrl} alt={`An ${mood.name} face emoji`} />
+      {mood.name}
+    </button>
+  ));
+
+  const postsElement = posts.map((post) => (
+    <div key={post.id} className="post">
+      <div className="header">
+        <h3>{displayFormatedDate(post.createdAt)}</h3>
+        <img src={`./emojis/${post.mood}.png`} />
+      </div>
+      <p>{post.body}</p>
+      <button onClick={() => handleDeletePost(post.id)}>Delete</button>
+      <button
+        onClick={() =>
+          setEditingPost({ id: post.id, body: post.body })
+        }
+      >
+        Edit
+      </button>
+    </div>
+  ))
+
+  /*
+<div id="posts" class="posts-section">
+                        <div class="post">
+                            
+                            <p>
+                                My personal feeling is that this app is looking pretty darn' AMAZING!
+                            </p>
+                        </div>
+                    </div>
+
+
+   */
+
+  return (
+    <section id="logged-in-view">
+      <div className="container">
+        <nav>
+          <button className="update-profile-btn scale" onClick={toggleModal}>
+            Update Profile
+          </button>
+
+          <button className="sign-out-btn scale" onClick={onSignOut}>
+            <img
+              src="./icons/icon-sign-out.svg"
+              className="icon-img-btn"
+              alt="Sign out icon"
+            />
+          </button>
+        </nav>
+
+        <div className="app-container">
+          <div className="user-section">
+            <img
+              id="user-profile-picture"
+              src={user.photoURL}
+              alt={`${user.name ? user.name : "User"}'s profile picture`}
+            />
+            <h2 id="user-greeting">
+              Hello, {user.name ? user.name.split(" ")[0] : "my friend"}! How are you?
+            </h2>
+          </div>
+        </div>
+
+        {/* Mood Section */}
+        < div className="mood-emojis" >
+          {moodElments}
+        </div >
+
+        {/* Create Post Section */}
+        < CreatePost
+          handleNewPostChange={handleNewPostChange}
+          handleAddPost={handleAddPost}
+          newPost={newPost}
+        />
+
+        {/* Display Posts */}
+        < div className="posts-section" >
+          {
+            posts.length > 0 ? (
+              postsElement
+            ) : (
+              <p>No Posts Available</p>
+            )
+          }
+        </div >
+
+        {/* Edit Post Section */}
+        {
+          editingPost.id && (
+            <div className="edit-post-section">
+              <textarea
+                value={editingPost.body}
+                onChange={handleUpdatePostChange}
+              ></textarea>
+              <button onClick={handleUpdatePost}>Update Post</button>
+            </div>
+          )
+        }
+
+        {/* Update Profile Modal */}
+        {
+          showModal && (
+            <UpdateProfileModal
+              updatedUser={updatedUser}
+              handleUpdateProfile={handleUpdateProfile}
+              handleUpdateProfileChange={handleUpdateProfileChange}
+              closeModal={toggleModal}
+            />
+          )
+        }
+
+      </div >
+    </section >
+  );
+}
+
+export default LoggedInView;
+
