@@ -30,18 +30,20 @@
     height: 1.7em;
     box-shadow: 0px var(--button-height) 0px 0px var(--dark-color);
     background: transparent;
-    border: 2px solid #333; 
+    border: 2px solid #333;
     border-radius: 50%;
     text-align: center;
     font-size: 1.5rem;
     cursor: pointer;
     padding: 0;
     margin: 0;
+    color: var(--dark-color);
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .close-btn:hover {
-  background-color: var(--secondary-color); 
-  transform: scale(1.1);
+    background-color: var(--secondary-color);
+    transform: scale(1.1);
 }
 
 .modal input,

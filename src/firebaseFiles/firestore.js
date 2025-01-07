@@ -144,6 +144,7 @@ const fetchThisMonthPost = (user, setPosts) => {
 }
 
 const pickFunction = (value, user, setPosts) => {
+    if(user== null) return;
   switch (value) {
     case "Today":
       fetchTodayPost(user, setPosts);

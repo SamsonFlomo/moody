@@ -52,17 +52,17 @@ function LoggedInView({
       </div>
       <p> {replaceNewLines(post.body)} </p>
       <div className="footer">
-      <button
-        onClick={() => updateEditingPost(post.id, post.body)}
-        className="edit-color"
-        aria-pressed={editingPost.id === post.id}
-      >
-        Edit
-      </button>
-      <button
-        onClick={() => handleDeletePost(post.id)}
-        className="delete-color"
-      >Delete</button>
+        <button
+          onClick={() => updateEditingPost(post.id, post.body)}
+          className="edit-color"
+          aria-pressed={editingPost.id === post.id}
+        >
+          Edit
+        </button>
+        <button
+          onClick={() => handleDeletePost(post.id)}
+          className="delete-color"
+        >Delete</button>
       </div>
     </div>
   ))
@@ -84,7 +84,9 @@ function LoggedInView({
     <section id="logged-in-view">
       <div className="container">
         <nav>
-          <button className="update-profile-btn scale" onClick={toggleModal}>
+          <button
+            className="update-profile-btn scale secondary-btn"
+            onClick={toggleModal}>
             Update Profile
           </button>
 

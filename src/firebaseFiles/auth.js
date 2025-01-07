@@ -45,7 +45,7 @@ const observeAuthState = (setUser, setIsLoggedIn, setPosts, setFilterBtns, filte
         photoURL: user.photoURL,
         successMessage: "",
         errorMessage: "",
-      })); 
+      }));
       const activeBtn = filterBtns.find(btn => btn.selected === "selected-filter");
       let id = activeBtn.id;
       filterPosts(id, setFilterBtns, setPosts)
@@ -143,12 +143,15 @@ const createAccount = async (user, setUser) => {
 const signOutUser = (setUser) => {
   signOut(auth)
     .then(() => {
-      setUser({
+      setUser(prevUser => ({
+        ...prevUser,
+        name: "",
         email: "",
         password: "",
+        photoURL: "./images/default-profile-picture.jpeg",
         errorMessage: "",
         successMessage: "",
-      });
+      }))
     })
     .catch((error) => {
       console.error("Error signing out:", error);

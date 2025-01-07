@@ -180,6 +180,7 @@ button {
     padding: 0.6em;
     background-color: transparent;
     transition: background-color 0.3s ease, color 0.3s ease;
+    color: var(--dark-color);
 }
 
 .secondary-btn:hover {
@@ -238,6 +239,7 @@ button {
     text-align: center;
     padding: 0;
     margin: 0;
+    font-weight: 600;
 }
 
 .scale:hover {
@@ -375,7 +377,7 @@ button {
 }
 
 .unselected-emoji {
-    transform: scale(1); 
+    transform: scale(1);
 }
 
 /* == Posts Section - Filters == */
@@ -438,6 +440,9 @@ button {
 
 /* === Media Queries === */
 @media screen and (max-width: 600px) {
+    .container {
+        max-width: 90%;
+    }
 
     .user-section img {
         width: 3em;
@@ -460,4 +465,3 @@ button {
         font-size: 1em;
     }
 }
-
