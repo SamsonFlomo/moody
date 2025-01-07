@@ -146,6 +146,7 @@ input:focus,
 button:focus {
     outline: 2px dashed var(--primary-color);
     outline-offset: 2px;
+    font-weight: 500;
 }
 
 input {
@@ -169,6 +170,7 @@ button {
     box-shadow: 0px var(--button-height) 0px 0px var(--dark-color);
     position: relative;
     transition: top 0.2s ease, box-shadow 0.2s ease;
+    color: var(--dark-color);
 }
 
 .primary-btn:hover {
@@ -451,6 +453,7 @@ button {
 
     .app-title {
         font-size: 2.2em;
+        margin: 3em 0 1em 0;
     }
 
     .primary-btn {

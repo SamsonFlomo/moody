@@ -48,5 +48,17 @@
 
 .modal input,
 .modal button {
-    margin: 1em 0;
+    margin: 1em auto;
 }
+
+.update-profile {
+  display: flex;
+  flex-direction: column;
+  gap: .5em;  
+}
+
+.update-profile label input {
+  margin: .5em auto;  
+}
+
+
